@@ -1,0 +1,49 @@
+1. create table:
+############################################################
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.45 sec)
+
+mysql> create database precisetestdb default character set utf8;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> use precisetestdb;
+Database changed
+mysql> show tables;
+Empty set (0.04 sec)
+
+CREATE TABLE functions(
+   function_name VARCHAR(100) NOT NULL,
+   test_cases VARCHAR(3000) ,
+   PRIMARY KEY ( function_name )
+);
+
+INSERT INTO functions (function_name, test_cases) VALUES ("func1", "tc1");					   
+INSERT INTO functions (function_name, test_cases) VALUES ("func2", "tc1,tc2,tc3");		
+INSERT INTO functions (function_name, test_cases) VALUES ("func3", "tc2,tc3");
+
+CREATE TABLE testcases(
+   testcase_name VARCHAR(100) NOT NULL,
+   PRIMARY KEY ( testcase_name )
+);
+INSERT INTO testcases (testcase_name) VALUES ("tc1");	
+INSERT INTO testcases (testcase_name) VALUES ("tc2");
+INSERT INTO testcases (testcase_name) VALUES ("tc3");
+
+select * from functions where test_cases like '%tc1%';
+select * from functions where test_cases like '%tc2%';
+select * from functions where test_cases like '%tc3%';
+select * from functions where test_cases like '%tc2%' and test_cases like '%tc3%';
+
+
+use mysql;
+select distinct(User) from user;
+显示该数据库授权登陆的用户名(其实还有HOST的限制)
+mysql的默认端口号是3306，通常mysql的服务名都是mysqld.
