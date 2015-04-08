@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.precisetest.mappers.functionMapper">
+	<resultMap type="function" id="functionResult">
+		<result property="function_name" column="function_name" />
+		<result property="test_cases" column="test_cases" />
+	</resultMap>
+
+	<select id="findAllFunctions" resultMap="functionResult">
+		SELECT * FROM precisetestdb.functions
+	</select>
+	
+    <select id="findFunctionByName" parameterType="String" resultType="function">
+		SELECT * FROM precisetestdb.functions where function_name=#{Name}
+	</select>
+
+</mapper>
