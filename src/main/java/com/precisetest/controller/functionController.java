@@ -24,7 +24,7 @@ public class functionController {
 	}
 	
 	@RequestMapping("/function")
-	public String getProductById(@RequestParam("name") String functionName,
+	public String getFunctionByName(@RequestParam("name") String functionName,
 			Model model) {
 		model.addAttribute("function", functionService.findFunctionByName(functionName));
 		return "function";

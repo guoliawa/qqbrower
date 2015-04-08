@@ -19,5 +19,4 @@ public class function {
 	public void setTest_cases(String test_cases) {
 		this.test_cases = test_cases;
 	}
-
 }
